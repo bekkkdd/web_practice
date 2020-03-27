@@ -17,13 +17,6 @@ def product_detail(request, product_id):
     except Product.DoesNotExist as e:
         return JsonResponse({'error': str(e)})
     return JsonResponse(product.to_json())
-    # product_json = [products_json() for product in products]
-    # for product in products:
-    #     if product['id']==product_id:
-    #         return JsonResponse(product)
-
-    # return JsonResponse({'Error':'Product does not exist'})
-
 
 def category_list(request):
     categories = Category.objects.all()
