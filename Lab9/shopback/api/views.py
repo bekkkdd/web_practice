@@ -33,6 +33,10 @@ def category_detail(request, category_id):
 
 
 def category_product(request, category_id):
+    try:
+        Category.objects.get(id=category_id)
+    except Category.DoesNotExist as e:
+        return JsonResponse({'error': str(e)})
     products = Product.objects.all()
     products_json = []
     for product in products:
@@ -41,4 +45,4 @@ def category_product(request, category_id):
             products_json.append(product)
     if (len(products_json)):
         return JsonResponse(products_json, safe=False)
-    return HttpResponse('Category does not exist')
+    return HttpResponse('Category is empty')
