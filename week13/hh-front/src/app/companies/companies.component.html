@@ -1,4 +1,5 @@
 <h1 class="header">Companies</h1>
 <div *ngFor="let c of companies" class="item" routerLink="/company/:{{c.id}}">
   <a>{{ c.name }}</a>
+  <button (click)="deleteCompany(c.id)">Delete</button>
 </div>
